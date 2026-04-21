@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>日期與時間</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .clock-container {
+            text-align: center;
+            padding: 50px 80px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .date {
+            font-size: 1.5rem;
+            color: #a8d8ea;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+
+        .time {
+            font-size: 5rem;
+            font-weight: 300;
+            color: #ffffff;
+            text-shadow: 0 0 30px rgba(168, 216, 234, 0.5);
+        }
+
+        .seconds {
+            font-size: 2rem;
+            color: #a8d8ea;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 600px) {
+            .clock-container {
+                padding: 30px 40px;
+            }
+            .time {
+                font-size: 3rem;
+            }
+            .seconds {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="clock-container">
+        <div class="date" id="date"></div>
+        <div class="time">
+            <span id="hours">00</span>:<span id="minutes">00</span>
+        </div>
+        <div class="seconds" id="seconds">00</div>
+    </div>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+
+            const year = now.getFullYear();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            const weekDays = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+            const weekDay = weekDays[now.getDay()];
+            document.getElementById('date').textContent = `${year}年${month}月${day}日 ${weekDay}`;
+
+            document.getElementById('hours').textContent = String(now.getHours()).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(now.getMinutes()).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(now.getSeconds()).padStart(2, '0');
+        }
+
+        updateClock();
+        setInterval(updateClock, 1000);
+    </script>
+</body>
+</html>
