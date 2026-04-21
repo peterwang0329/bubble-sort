@@ -12,7 +12,7 @@
 ## 預覽
 
 直接在瀏覽器開啟 `clock/clock.html`，或訪問 GitHub Pages：
-https://peterwang0329.github.io/clock/
+https://peterwang0329.github.io/bubble-sort/clock/clock.html
 
 ## 技術棧
 
